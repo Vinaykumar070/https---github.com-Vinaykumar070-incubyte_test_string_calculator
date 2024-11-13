@@ -1,4 +1,4 @@
-import { add } from "@/utils/calculator";
+import { add } from "@/helper/calculator";
 import { useState } from "react";
 
 const StringCalculator: React.FC = () => {

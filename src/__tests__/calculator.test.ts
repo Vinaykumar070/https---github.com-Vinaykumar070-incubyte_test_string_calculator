@@ -1,4 +1,4 @@
-import { add } from "../utils/calculator";
+import { add } from "../helper/calculator";
 
 describe("add function", () => {
   test("should return 0 for an empty string", () => {
