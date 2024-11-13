@@ -3,7 +3,8 @@
 This repository contains the code for the Incubyte TDD Assessment (Frontend React), implementing a String Calculator built with Test-Driven Development (TDD) principles
 
 **Project Deployment:** 
- URL: https://incubyte-calculater-assignment.web.app/
+ GitHub repository link: https://github.com/Vinaykumar070/incubyte_test_string_calculator_repo
+ Deployed Url link: https://incubyte-calculater-assignment.web.app/
 
 **Project Overview:**
 The project implements a String Calculator in line with the assessment guidelines:

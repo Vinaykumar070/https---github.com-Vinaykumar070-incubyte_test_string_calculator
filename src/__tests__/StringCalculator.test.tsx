@@ -7,7 +7,7 @@ describe("StringCalculator Component", () => {
     render(<StringCalculator />);
 
     const headingElement = screen.getByRole("heading", {
-      name: "Simple String Calculator",
+      name: "String Calculator Assignment",
     });
     expect(headingElement).toBeInTheDocument();
   });
