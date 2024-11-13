@@ -1,64 +1,67 @@
-import { add } from "@/helper/calculator";
+import { addition } from "@/helper/calculator";
 import { useState } from "react";
 
 const StringCalculator: React.FC = () => {
-  const [input, setInput] = useState<string>("");
-  const [result, setResult] = useState<string>("");
-  const [isError, setIsError] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [calculationResult, setCalculationResult] = useState<string>("");
+  const [hasError, setHasError] = useState<boolean>(false);
 
-  const calculate = () => {
+  const handleCalculation = () => {
     try {
-      const sum: number = add(input);
-      setResult(sum.toString());
-      setIsError(false);
+      const result: number = addition(inputValue);
+      setCalculationResult(result.toString());
+      setHasError(false);
     } catch (error) {
-      setResult(`${error}`);
-      setIsError(true);
+      setCalculationResult(`${error}`);
+      setHasError(true);
     }
   };
 
-  const clear = () => {
-    setIsError(false);
-    setInput("");
-    setResult("");
+  const resetCalculator = () => {
+    setHasError(false);
+    setInputValue("");
+    setCalculationResult("");
   };
 
   return (
-    <>
-   <h2 className="text-lg font-bold mb-8 text-black text-center mt-28">Simple String Calculator</h2>
-      <div className="max-w-2xl mx-auto p-5 mt-18 bg-white rounded-lg shadow-md bg-gradient-to-r border-2 border-green-900">
-        <div className="flex flex-col">
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            rows={4}
-            cols={50}
-            className="p-2 text-sm text-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 border-2"
-            placeholder="Enter numbers separated by commas"
-          />
-          <div className="flex flex-row  flex justify-end">
-            <button
-              onClick={calculate}
-              className="mt-4 py-2 px-4 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-500"
-            >
-              Calculate
-            </button>
-            <button
-              onClick={clear}
-              className="ml-4 mt-4 py-2 px-4 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-500"
-            >
-              Clear
-            </button>
-          </div>
+    <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 p-4">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-8 mt-12 text-center">
+        Simple String Calculator
+      </h2>
+      <div className="max-w-lg w-full bg-white p-6 rounded-xl shadow-lg border-2 border-blue-200">
+        <textarea
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          rows={4}
+          className="w-full p-3 mb-4 text-gray-700 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter numbers separated by commas (e.g., 1,2,3)"
+        />
+        <div className="flex justify-end space-x-4">
+          <button
+            onClick={handleCalculation}
+            className="py-2 px-6 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200"
+          >
+            Calculate
+          </button>
+          <button
+            onClick={resetCalculator}
+            className="py-2 px-6 text-sm font-semibold text-blue-600 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-200"
+          >
+            Clear
+          </button>
         </div>
-        <p className="mt-4 text-lg font-bold mx-auto text-left">
-        Answer:{" "}
-        <span className={` ${isError ? "text-red-500" : "text-green-600"} `}>
-          {result}
-        </span>
-      </p>
+        {calculationResult && (
+          <div className="mt-6 text-center">
+            <p className="text-lg font-medium text-gray-700">
+              Answer:{" "}
+              <span className={hasError ? "text-red-600" : "text-green-600"}>
+                {calculationResult}
+              </span>
+            </p>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
