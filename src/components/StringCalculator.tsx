@@ -26,7 +26,7 @@ const StringCalculator: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-orange-300 to-purple-400 p-6">
-      <h2 className="text-3xl font-extrabold text-indigo-900 mb-10 mt-12 text-center shadow-md px-4 py-2 bg-gradient-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text">
+      <h2 className="text-3xl font-extrabold text-orange-900 mb-10 mt-12 text-center shadow-md px-4 py-2 bg-gradient-to-r from-yellow-400 to-pink-500 text-transparent bg-clip-text">
         String Calculator Assignment
       </h2>
       <form
