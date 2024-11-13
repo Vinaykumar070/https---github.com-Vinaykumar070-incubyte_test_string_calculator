@@ -1,7 +1,7 @@
 export function addition(numbers: string): number {
   if (!numbers) return 0;
 
-  let delimiter = /,|\n/; // Default delimiters: comma or newline
+  let delimiter = /,|\n/; // Default delimiters: comma or newline *
 
   // Check for custom delimiter
   if (numbers.startsWith("//")) {
