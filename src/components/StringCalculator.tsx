@@ -25,44 +25,44 @@ const StringCalculator: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 p-4">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-8 mt-12 text-center">
+    <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-orange-300 to-purple-400 p-6">
+      <h2 className="text-3xl font-extrabold text-orange-900 mb-10 mt-12 text-center shadow-md px-4 py-2 bg-gradient-to-r from-yellow-400 to-pink-500 text-transparent bg-clip-text">
         Calculator Assignment
       </h2>
       <form
         onSubmit={handleCalculation}
-        className="max-w-lg w-full bg-white p-6 rounded-xl shadow-lg border-2 border-blue-200"
+        className="max-w-lg w-full bg-white p-8 rounded-3xl shadow-xl border-4 border-gradient-to-br from-purple-500 to-blue-500"
       >
         <textarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           rows={4}
-          className="w-full p-3 mb-4 text-gray-700 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 mb-6 text-gray-800 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
           placeholder="Enter numbers separated by commas (e.g., 1,2,3)"
         />
-        <div className="flex justify-end space-x-4">
+        <div className="flex space-x-4 mt-4">
           <button
             type="submit" // Sets the button to submit the form
-            className="py-2 px-6 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200"
+            className="py-3 px-8 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-xl shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105"
           >
             Calculate
           </button>
           <button
             type="button" // Keeps this button from submitting the form
             onClick={resetCalculator}
-            className="py-2 px-6 text-sm font-semibold text-blue-600 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-200"
+            className="py-3 px-8 text-sm font-semibold text-blue-700 bg-gray-200 rounded-xl shadow-lg hover:bg-gray-300 transition duration-300 transform hover:scale-105"
           >
             Clear
           </button>
         </div>
         {!calculationResult && (
-          <p className="text-md font-medium text-gray-700 mt-4">
+          <p className="text-md font-medium text-gray-700 mt-4 text-center">
             The result will be displayed here
           </p>
         )}
         {calculationResult && (
           <div className="mt-6 text-center">
-            <p className="text-lg font-medium text-gray-700">
+            <p className="text-xl font-semibold text-gray-700">
               Answer:{" "}
               <span className={hasError ? "text-red-600" : "text-green-600"}>
                 {calculationResult}
