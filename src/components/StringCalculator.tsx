@@ -27,7 +27,7 @@ const StringCalculator: React.FC = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 p-4">
       <h2 className="text-2xl font-semibold text-gray-800 mb-8 mt-12 text-center">
-        Simple String Calculator
+        Calculator-Assignment
       </h2>
       <form
         onSubmit={handleCalculation}
