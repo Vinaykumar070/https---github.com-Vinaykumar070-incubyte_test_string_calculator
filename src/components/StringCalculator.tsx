@@ -1,12 +1,13 @@
 import { addition } from "@/helper/calculator";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 
 const StringCalculator: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [calculationResult, setCalculationResult] = useState<string>("");
   const [hasError, setHasError] = useState<boolean>(false);
 
-  const handleCalculation = () => {
+  const handleCalculation = (e: FormEvent) => {
+    e.preventDefault(); // Prevents the form from reloading the page
     try {
       const result: number = addition(inputValue);
       setCalculationResult(result.toString());
@@ -28,7 +29,10 @@ const StringCalculator: React.FC = () => {
       <h2 className="text-2xl font-semibold text-gray-800 mb-8 mt-12 text-center">
         Simple String Calculator
       </h2>
-      <div className="max-w-lg w-full bg-white p-6 rounded-xl shadow-lg border-2 border-blue-200">
+      <form
+        onSubmit={handleCalculation}
+        className="max-w-lg w-full bg-white p-6 rounded-xl shadow-lg border-2 border-blue-200"
+      >
         <textarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -38,18 +42,24 @@ const StringCalculator: React.FC = () => {
         />
         <div className="flex justify-end space-x-4">
           <button
-            onClick={handleCalculation}
+            type="submit" // Sets the button to submit the form
             className="py-2 px-6 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200"
           >
             Calculate
           </button>
           <button
+            type="button" // Keeps this button from submitting the form
             onClick={resetCalculator}
             className="py-2 px-6 text-sm font-semibold text-blue-600 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-200"
           >
             Clear
           </button>
         </div>
+        {!calculationResult && (
+          <p className="text-md font-medium text-gray-700 mt-4">
+            The result will be displayed here
+          </p>
+        )}
         {calculationResult && (
           <div className="mt-6 text-center">
             <p className="text-lg font-medium text-gray-700">
@@ -60,7 +70,7 @@ const StringCalculator: React.FC = () => {
             </p>
           </div>
         )}
-      </div>
+      </form>
     </div>
   );
 };
