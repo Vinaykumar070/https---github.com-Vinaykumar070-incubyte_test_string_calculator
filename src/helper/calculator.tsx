@@ -1,15 +1,16 @@
 export function addition(numbers: string): number {
+  
   if (!numbers) return 0;
 
   let delimiter = /,|\n/; // Default delimiters: comma or newline * (/\[([^\[\]]+)\]/g)
+  function hasCustomDelimter() {
+    return numbers.startsWith("//")
+  }
 
-  // Check for custom delimiter
-  if (numbers.startsWith("//")) {
+  if (hasCustomDelimter()) {
     const [delimiterPart, numberPart] = numbers.split("\n", 2);
     const customDelimiter = delimiterPart.slice(2).replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
     delimiter = new RegExp(customDelimiter); // is creating a new regular expression object based on the value of customDelimiter.
-    // ex if input "1;2;3;4"  so delimiter = new RegExp(customDelimiter); 
-    // returns delimter as ; based on this wecan saperate  ie 1,2,3,4
     numbers = numberPart;
   }
 
